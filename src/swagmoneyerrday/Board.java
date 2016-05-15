@@ -117,14 +117,21 @@ public class Board extends JPanel implements ActionListener {
     
     private void drawGameOver(Graphics g) {
 
-        String msg = "Game Over :( Score: " + score + " Accuracy: " + score*100/craft.shots() + "%";
-        Font small = new Font("Helvetica", Font.BOLD, 36);
-        FontMetrics fm = getFontMetrics(small);
+        String msg = "Game Over :(";
+        Font large = new Font("Helvetica", Font.BOLD, 36);
+        FontMetrics fm = getFontMetrics(large);
+        
+        String msg2 = "Score: " + score + " Accuracy: " + score*100/craft.shots() + "%";
+        Font small = new Font("Helvetica", Font.BOLD, 14);
+        FontMetrics fm2 = getFontMetrics(small);
 
         g.setColor(Color.white);
-        g.setFont(small);
+        g.setFont(large);
         g.drawString(msg, (B_WIDTH - fm.stringWidth(msg)) / 2,
                 B_HEIGHT / 2);
+        g.setFont(small);
+        g.drawString(msg2, (B_WIDTH - fm2.stringWidth(msg2)) / 2,
+                B_HEIGHT / 2 + fm.getHeight());
     }
 
     @Override
