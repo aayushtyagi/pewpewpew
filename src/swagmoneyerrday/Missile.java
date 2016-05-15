@@ -1,4 +1,4 @@
-package com.swag;
+package swagmoneyerrday;
 
 public class Missile extends Sprite {
 

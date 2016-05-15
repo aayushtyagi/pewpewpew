@@ -1,4 +1,4 @@
-package com.swag;
+package swagmoneyerrday;
 
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -6,8 +6,8 @@ import java.util.ArrayList;
 public class Shooter extends Sprite {
 
     private int dx;
-    private int dy;
-    private final int SPEED = 5;
+    private final int SPEED = 10;
+    private int speed = SPEED;
     private ArrayList<Missile> missiles;
     private boolean keyPressed = false;
     private int ammo;
@@ -20,54 +20,28 @@ public class Shooter extends Sprite {
     }
 
     private void initCraft() {
-        
         missiles = new ArrayList<>();
         loadImage("src/craft.png");
         getImageDimensions();
     }
 
     public void move() {
-
         x += dx;
-        y += dy;
-
-        if (x < 1) {
-            x = 1;
-        }
-
-        if (y < 1) {
-            y = 1;
-        }
+        if (x < 1) { x = 1; }
+        if (y < 1) { y = 1; }
     }
 
-    public ArrayList getMissiles() {
-        return missiles;
-    }
+    public ArrayList getMissiles() { return missiles; }
 
     public void keyPressed(KeyEvent e) {
-
         int key = e.getKeyCode();
-
         if (key == KeyEvent.VK_SPACE) {
         	if (!keyPressed) { fire(); }
             keyPressed = true;
         }
-
-        if (key == KeyEvent.VK_A) {
-            dx = -SPEED;
-        }
-
-        if (key == KeyEvent.VK_D) {
-            dx = SPEED;
-        }
-
-        /*if (key == KeyEvent.VK_W) {
-            dy = -SPEED;
-        }
-
-        if (key == KeyEvent.VK_S) {
-            dy = SPEED;
-        }*/
+        if (key == KeyEvent.VK_SHIFT) { speed = SPEED / 2;}
+        if (key == KeyEvent.VK_A || key == KeyEvent.VK_LEFT) { dx = -speed; }
+        if (key == KeyEvent.VK_D || key == KeyEvent.VK_RIGHT) { dx = speed; }
     } 
 
     public void fire() {
@@ -83,27 +57,10 @@ public class Shooter extends Sprite {
     public void addAmmo() { ammo++; }
 
     public void keyReleased(KeyEvent e) {
-
         int key = e.getKeyCode();
-
-        if (key == KeyEvent.VK_SPACE) {
-        	keyPressed = false;
-        }
-        
-        if (key == KeyEvent.VK_A) {
-            dx = 0;
-        }
-
-        if (key == KeyEvent.VK_D) {
-            dx = 0;
-        }
-
-        /*if (key == KeyEvent.VK_W) {
-            dy = 0;
-        }
-
-        if (key == KeyEvent.VK_S) {
-            dy = 0;
-        }*/
+        if (key == KeyEvent.VK_SPACE) { keyPressed = false; }
+        if (key == KeyEvent.VK_SHIFT) { speed  = SPEED; }
+        if (key == KeyEvent.VK_A || key == KeyEvent.VK_LEFT) { dx = 0; }
+        if (key == KeyEvent.VK_D  || key == KeyEvent.VK_RIGHT) { dx = 0; }
     }
 }

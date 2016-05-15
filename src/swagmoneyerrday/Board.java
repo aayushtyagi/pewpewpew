@@ -1,4 +1,4 @@
-package com.swag;
+package swagmoneyerrday;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -97,13 +97,22 @@ public class Board extends JPanel implements ActionListener {
 
     private void drawStartScreen(Graphics g) {
     	String msg = "Press Space to Start";
-        Font small = new Font("Helvetica", Font.BOLD, 36);
-        FontMetrics fm = getFontMetrics(small);
+        Font large = new Font("Helvetica", Font.BOLD, 36);
+        FontMetrics fm = getFontMetrics(large);
+
+        g.setColor(Color.white);
+        g.setFont(large);
+        g.drawString(msg, (B_WIDTH - fm.stringWidth(msg)) / 2,
+                B_HEIGHT / 2);
+        
+        String controls = "Ctrls: Left/Right to move, Space to shoot, Shift to move half speed.";
+        Font small = new Font("Helvetica", Font.BOLD, 14);
+        FontMetrics fm2 = getFontMetrics(small);
 
         g.setColor(Color.white);
         g.setFont(small);
-        g.drawString(msg, (B_WIDTH - fm.stringWidth(msg)) / 2,
-                B_HEIGHT / 2);
+        g.drawString(controls, (B_WIDTH - fm2.stringWidth(controls)) / 2,
+                B_HEIGHT / 2 + fm.getHeight());
     }
     
     private void drawGameOver(Graphics g) {

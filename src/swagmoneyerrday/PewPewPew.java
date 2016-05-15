@@ -1,4 +1,4 @@
-package com.swag;
+package swagmoneyerrday;
 
 import java.awt.EventQueue;
 import javax.swing.JFrame;
