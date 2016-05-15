@@ -1,4 +1,4 @@
-package com.zetcode;
+package com.swag;
 
 import java.awt.EventQueue;
 import javax.swing.JFrame;

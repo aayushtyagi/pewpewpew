@@ -1,4 +1,4 @@
-package com.zetcode;
+package com.swag;
 
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -11,6 +11,7 @@ public class Shooter extends Sprite {
     private ArrayList<Missile> missiles;
     private boolean keyPressed = false;
     private int ammo;
+    private int shots = 0;
 
     public Shooter(int x, int y, int ammo) {
         super(x, y);
@@ -72,9 +73,12 @@ public class Shooter extends Sprite {
     public void fire() {
         missiles.add(new Missile(x + width / 2 - 8, y));
         ammo--;
+        shots++;
     }
     
     public int ammo() { return ammo; }
+    
+    public int shots() { return shots; }
     
     public void addAmmo() { ammo++; }
 

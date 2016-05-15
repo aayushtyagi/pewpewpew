@@ -1,4 +1,4 @@
-package com.zetcode;
+package com.swag;
 
 public class Trump extends Sprite {
 

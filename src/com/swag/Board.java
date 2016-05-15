@@ -1,4 +1,4 @@
-package com.zetcode;
+package com.swag;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -30,6 +30,7 @@ public class Board extends JPanel implements ActionListener {
     private int frameAtLastSpawn = 0;
     private int currentFrame = 0;
     private int score = 0;
+    private final int STARTING_AMMO = 30;
     private final int TRUMP_SIZE = 32;
     private final int B_WIDTH = 1500;
     private final int B_HEIGHT = 700;
@@ -51,7 +52,7 @@ public class Board extends JPanel implements ActionListener {
         gamestarted = false;
         setPreferredSize(new Dimension(B_WIDTH, B_HEIGHT));
         if (KILL_DEATH_EXTRAVAGANZA) { spawnRate = 1; }
-        craft = new Shooter(ICRAFT_X, ICRAFT_Y, 50);
+        craft = new Shooter(ICRAFT_X, ICRAFT_Y, STARTING_AMMO);
         
         initTrumps();
 
@@ -88,13 +89,15 @@ public class Board extends JPanel implements ActionListener {
                 g.drawImage(a.getImage(), a.getX(), a.getY(), this);
             }
         }
+        String accuracy = "";
+        if (craft.shots() > 0) { accuracy = " Accuracy: " + score*100/craft.shots() + "%"; }
         g.setColor(Color.WHITE);
-        g.drawString("Aliens killed: " + score + " Ammo left: " + craft.ammo(), 5, 15);
+        g.drawString("Aliens killed: " + score + " Ammo left: " + craft.ammo() + accuracy, 5, 15);
     }
 
     private void drawStartScreen(Graphics g) {
     	String msg = "Press Space to Start";
-        Font small = new Font("Helvetica", Font.BOLD, 14);
+        Font small = new Font("Helvetica", Font.BOLD, 36);
         FontMetrics fm = getFontMetrics(small);
 
         g.setColor(Color.white);
@@ -105,8 +108,8 @@ public class Board extends JPanel implements ActionListener {
     
     private void drawGameOver(Graphics g) {
 
-        String msg = "Game Over";
-        Font small = new Font("Helvetica", Font.BOLD, 14);
+        String msg = "Game Over :( Score: " + score + " Accuracy: " + score*100/craft.shots() + "%";
+        Font small = new Font("Helvetica", Font.BOLD, 36);
         FontMetrics fm = getFontMetrics(small);
 
         g.setColor(Color.white);
