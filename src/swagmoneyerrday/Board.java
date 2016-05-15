@@ -116,7 +116,7 @@ public class Board extends JPanel implements ActionListener {
     }
     
     private void drawGameOver(Graphics g) {
-
+    	playAudio("src/imreallyrich.wav");
         String msg = "Game Over :(";
         Font large = new Font("Helvetica", Font.BOLD, 36);
         FontMetrics fm = getFontMetrics(large);
