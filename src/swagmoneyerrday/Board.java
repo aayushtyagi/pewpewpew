@@ -32,7 +32,7 @@ public class Board extends JPanel implements ActionListener {
     private int score = 0;
     private final int STARTING_AMMO = 30;
     private final int TRUMP_SIZE = 32;
-    private final int B_WIDTH = 1500;
+    private final int B_WIDTH = 1300;
     private final int B_HEIGHT = 700;
     private final int ICRAFT_X = B_WIDTH/2;
     private final int ICRAFT_Y = B_HEIGHT-TRUMP_SIZE;
